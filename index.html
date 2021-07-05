@@ -36,7 +36,7 @@
 
     <div class="overlay">
       <!-- Left -->
-      <div class="left">
+      <div class="left stagger">
         <h2>It's so easy</h2>
         <p class="subHead">You've got two options!</p>
 
@@ -65,7 +65,7 @@
       </div>
 
       <!-- Middle -->
-      <div class="middle">
+      <div class="middle stagger">
         <ul class="secondary">
           <li><a href="#">Home</a></li>
           <li><a href="#">Services</a></li>
@@ -117,7 +117,7 @@
       </div>
 
       <!-- Right -->
-      <div class="right">
+      <div class="right stagger">
         <svg
           class="exit"
           width="58"
@@ -133,5 +133,41 @@
         </svg>
       </div>
     </div>
+
+    <!-- gsap -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.0/gsap.min.js"
+      integrity="sha512-2fk3Q4NXPYAqIha0glLZ2nluueK43aNoxvijPf53+DgL7UW9mkN+uXc1aEmnZdkkZVvtJZltpRt+JqTWc3TS3Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      let open = document.querySelector(".active")
+      let close = document.querySelector(".exit")
+      let timeline = gsap.timeline()
+
+      //
+      timeline.to(".overlay", {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+        pointerEvents: "auto",
+        duration: 0.3,
+      })
+
+      timeline.to(".stagger", { x: 0, opacity: 1, stagger: 0.3 }, "-=0.6")
+      timeline.pause()
+
+      //
+      open.addEventListener("click", () => {
+        timeline.play()
+      })
+
+      //
+      close.addEventListener("click", () => {
+        timeline.reverse()
+      })
+    </script>
   </body>
 </html>
