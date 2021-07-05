@@ -87,12 +87,19 @@ h1 {
   display: grid;
   -ms-grid-columns: 75% auto 6em;
       grid-template-columns: 75% auto 6em;
+  opacity: 0;
+  -webkit-transform: translateX(10%) scale(0.9);
+          transform: translateX(10%) scale(0.9);
+  pointer-events: none;
 }
 
 .left,
 .right,
 .middle {
   height: 100vh;
+  -webkit-transform: translateX(15%);
+          transform: translateX(15%);
+  opacity: 0;
 }
 
 h2 {
